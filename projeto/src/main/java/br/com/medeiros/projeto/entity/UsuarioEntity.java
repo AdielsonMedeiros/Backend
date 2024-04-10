@@ -1,6 +1,5 @@
 package br.com.medeiros.projeto.entity;
 
-<<<<<<< HEAD
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -87,8 +86,5 @@ public class UsuarioEntity {
 		return Objects.equals(id, other.id);
 	}
 	
-=======
-public class UsuarioEntity {
->>>>>>> 1fbc26ddb68b26482a83124d5de6762d7dd13e36
 
 }
