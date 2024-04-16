@@ -2,6 +2,9 @@ package br.com.medeiros.projeto.entity;
 
 import java.util.Objects;
 
+import org.springframework.beans.BeanUtils;
+
+import br.com.medeiros.projeto.dto.RecursoDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +25,14 @@ public class RecursoEntity {
 	
 	@Column(nullable=false)
 	private String chave;
+	
+	public RecursoEntity(){
+		
+	}
+	
+	public RecursoEntity(RecursoDTO recurso) {
+		BeanUtils.copyProperties(recurso, this);
+	}
 
 	public Long getId() {
 		return id;
