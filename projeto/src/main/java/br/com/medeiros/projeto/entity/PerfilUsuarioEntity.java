@@ -1,6 +1,11 @@
 package br.com.medeiros.projeto.entity;
 
 
+import org.springframework.beans.BeanUtils;
+
+import br.com.medeiros.projeto.dto.PerfilDTO;
+import br.com.medeiros.projeto.dto.PerfilUsuarioDTO;
+import br.com.medeiros.projeto.dto.UsuarioDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,4 +35,16 @@ public class PerfilUsuarioEntity {
 	@ManyToOne
 	@JoinColumn(name = "ID_PERFIL")
 	private PerfilEntity perfil;
+	
+	
+	public PerfilUsuarioEntity(PerfilUsuarioDTO perfilUsuario) {
+		BeanUtils.copyProperties(perfilUsuario, this);
+		if(perfilUsuario != null && perfilUsuario.getUsuario() != null) {
+			this.usuario = new UsuarioEntity(perfilUsuario.getUsuario());
+		}
+		
+		if(perfilUsuario != null && perfilUsuario.getPerfil() != null) {
+			this.perfil = new PerfilEntity(perfilUsuario.getPerfil());
+		}
+	}
 }
